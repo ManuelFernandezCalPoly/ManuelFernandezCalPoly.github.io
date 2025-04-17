@@ -1,0 +1,16 @@
+Version: 1.0
+ProjectId: b05b3b3c-8581-43e3-b7ae-f052c6b13b41
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: pdfLaTeX
+
+ProjectName: Manuel Fernandez Quarto Website

@@ -1,0 +1,276 @@
+---
+format: dashboard
+title: "Manuel Fernandez"
+about:
+  template: jolla
+  image: profile.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+---
+
+Manuel Fernandez is a student at Cal Poly Pomona. When not studying for exams or doing homework, Manuel enjoys spending time with family and going out with friends.
+
+# Home Page
+
+![My Photo](images/my_photo.jpg)
+
+## Aspirations
+
+**Career Aspirations**
+
+I aim to become an expert in consultative selling, focusing on building long-term client relationships rather than just closing quick deals.
+
+## Skills
+
+**Skills**
+
+Presentation & Public Speaking
+
+Inventory Management
+
+Sales & Marketing
+
+Customer Service & Communication
+
+## Education
+
+**Education**
+
+California State Polytechnic University-Pomona Business Administration - Marketing Management Jun 2024 - Jun 2026
+
+San Bernardino Valley College Associate in Science for Transfer in Business Administration 2.0, Business Administration and Management, General Jun 2021 - May 2024
+
+# Interactive Dashboard
+
+```{python}
+import plotly.express as px
+df = px.data.gapminder()
+```
+
+## Row {height="60%"}
+
+```{python}
+#| title: GDP and Life Expectancy 
+px.scatter(  
+  df, x="gdpPercap", y="lifeExp", 
+  animation_frame="year", animation_group="country", 
+  size="pop", color="continent", hover_name="country",
+  facet_col="continent", log_x=True, size_max=45, 
+  range_x=[100,100000], range_y=[25,90] 
+)  
+```
+
+## Row {height="40%"}
+
+```{python}
+#| title: Population
+px.area(
+  df, x="year", y="pop", 
+  color="continent", line_group="country"
+)
+```
+
+```{python}
+#| title: Life Expectancy
+px.line(
+  df, x="year", y="lifeExp", 
+  color="continent", line_group="country"
+)
+```
+
+# Essay on Shiny Apps
+
+Hello! This is an essay on how I created my interactive dashboard that you seen earlier. I will dissect how I used data from Gapminder and tools provided by Plotly to create an interactive data visualisation dashboard.
+
+**Dataset: Gapminder**
+
+The Gapminder dataset provides socioeconomic data for countries around the world from 1952 to 2007. It includes variables like GDP per capita, life expectancy, population, and continent. This rich dataset is perfect for illustrating trends and patterns over time.
+
+**Tools Used:**
+
+Quarto: A scientific and technical publishing system that allows us to combine code, output, and narrative in a single document.
+
+Plotly Express: A high-level Python visualization library that makes it easy to create interactive plots.
+
+**Code Breakdown:**
+
+Let's break down the code used to create the dashboard, section by section.
+
+1\. **Data Loading:**
+
+Python
+
+import plotly.express as px
+
+df = px.data.gapminder()
+
+We import the plotly.express library, aliasing it as px.
+
+We load the Gapminder dataset using px.data.gapminder() and store it in the df DataFrame.
+
+2\. **Row 1: GDP and Life Expectancy Scatter Plot:**
+
+Python
+
+#\| title: GDP and Life Expectancy
+
+px.scatter(
+
+df, x="gdpPercap", y="lifeExp",
+
+animation_frame="year", animation_group="country",
+
+size="pop", color="continent", hover_name="country",
+
+facet_col="continent", log_x=True, size_max=45,
+
+range_x=\[100,100000\], range_y=\[25,90\]
+
+)
+
+This code creates an interactive scatter plot using px.scatter().
+
+x="gdpPercap" and y="lifeExp": These arguments specify the variables for the x and y axes.
+
+animation_frame="year": This enables animation, allowing us to see how the relationship between GDP and life expectancy changes over time.
+
+animation_group="country": This ensures that each country's data points are connected during the animation.
+
+size="pop": The size of the markers represents the population.
+
+color="continent": The color of the markers indicates the continent.
+
+hover_name="country": When you hover over a marker, the country name is displayed.
+
+facet_col="continent": This creates separate plots for each continent.
+
+log_x=True: The x-axis is displayed on a logarithmic scale.
+
+size_max=45: Sets the max marker size.
+
+range_x and range_y: Sets the x and y axis ranges.
+
+3\. **Row 2: Population Area Chart:**
+
+Python
+
+#\| title: Population
+
+px.area(
+
+df, x="year", y="pop",
+
+color="continent", line_group="country"
+
+)
+
+This code creates an area chart using px.area().
+
+x="year" and y="pop": These arguments specify the variables for the x and y axes.
+
+color="continent": The area is colored by continent.
+
+line_group="country": This groups the lines by country.
+
+4\. **Row 2: Life Expectancy Line Chart:**
+
+Python
+
+#\| title: Life Expectancy
+
+px.line(
+
+df, x="year", y="lifeExp",
+
+color="continent", line_group="country"
+
+)
+
+This code creates a line chart using px.line().
+
+x="year" and y="lifeExp": These arguments specify the variables for the x and y axes.
+
+color="continent": The lines are colored by continent.
+
+line_group="country": This groups the lines by country.
+
+**Key Concepts:**
+
+Interactive Visualization: Plotly Express enables interactive plots, allowing users to explore data dynamically.
+
+Animation: Animation helps visualize changes over time.
+
+Faceting: Faceting creates multiple plots based on a categorical variable.
+
+Data Aggregation and Grouping: Grouping data by continent and country allows for comparative analysis.
+
+**How to Use the Dashboard:**
+
+Scatter Plot: Use the animation slider to see how GDP and life expectancy have changed over the years. Hover over markers to see country details. Observe the trends and differences between continents.
+
+Area Chart: Observe the total population change per continent over time.
+
+Line Chart: Compare the life expectancy trends of various countries and continents over time.
+
+**Benefits of Using Quarto and Plotly Express:**
+
+Reproducibility: Quarto allows for reproducible research and reporting.
+
+Interactivity: Plotly Express provides interactive visualizations, making data exploration more engaging.
+
+Ease of Use: Both Quarto and Plotly Express are relatively easy to learn and use.
+
+Integration: Quarto seamlessly integrates with Python and other languages.
+
+**Conclusion:**
+
+This dashboard demonstrates the power of Quarto and Plotly Express for creating interactive data visualizations. By combining these tools, we can create compelling dashboards that facilitate data exploration and communication. I encourage you to experiment with these tools and create your own interactive dashboards.
+
+# Essay on ShinyLive
+
+**What is Shinylive?**
+
+Shinylive is a new and innovative way to run Shiny apps entirely in the browser—without the need for a server. It uses a technology called WebAssembly to run R code directly in the user’s browser, making Shiny applications “serverless.” This means there’s no backend R session running on a remote server; everything happens on the client side. Shinylive enables instant interactivity while keeping deployment simple and low-maintenance.
+
+**How is Shinylive Different from Traditional Shiny Apps?**
+
+In traditional Shiny apps (as introduced in Step 2), the app is hosted on a server where R runs continuously. Users interact with the app via a web interface, but all the data processing and reactive logic is handled by the server.
+
+By contrast, Shinylive skips the server entirely:
+
+It packages your app and R environment in a way that can run in a modern web browser using WebAssembly.
+
+There is no persistent server connection or hosting cost.
+
+The app is entirely static and can be hosted anywhere you can put HTML files (like GitHub Pages, Netlify, or even a USB stick).
+
+**Pros of Shinylive**
+
+No server required: Eliminates server management and costs.
+
+Easy deployment: Just upload the files like a regular website.
+
+Scalable: Since there’s no backend load, thousands of people can use the app at the same time without overloading a server.
+
+Portable: Can run offline once loaded—ideal for demos or sharing in restricted environments.
+
+Fast to load: Especially for smaller apps, once cached in the browser, they run almost instantly.
+
+**Cons of Shinylive**
+
+Limited functionality: Not all R packages are supported yet, especially those requiring native code or large system dependencies.
+
+Browser memory limits: Since all the computation happens in the browser, complex apps with heavy data processing may not perform well.
+
+No persistent backend: You can’t use server-side logic like database connections, user authentication, or file uploads.
+
+Larger initial load: The app needs to download the R interpreter and packages (via WebAssembly), which can slow down the first load.
+
+**Summary**
+
+Shinylive is a game-changing approach for lightweight, static, and easily shareable Shiny apps that don’t need a server. It’s ideal for educational tools, prototypes, and simple data visualizations. While it’s not a replacement for full-featured Shiny apps in all cases, it opens up exciting new possibilities for interactive R content on the web—without the server overhead.
